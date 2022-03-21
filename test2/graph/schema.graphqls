@@ -1,0 +1,39 @@
+type Owner {
+ id: ID!
+ name: String!
+ isSingle: Boolean!
+ address: String!
+}
+
+type Query {
+ owner: [Owner!]!
+ singleOwner (isSingle: Boolean!):[Owner]
+}
+
+input NewOwner {
+ name: String!
+ isSingle: Boolean!
+#  address: NewAddress!
+}
+
+type NewAddress {
+city: String!
+district: String!
+subDistric: String!
+}
+
+
+input OldOwner{
+  id: ID!
+  name: String!
+  isSingle: Boolean!
+}
+input delete{
+  id: ID!
+}
+
+type Mutation {
+ createOwner(input: NewOwner!): Owner!
+ updateOwner(input: OldOwner!): Owner!
+ deleteOwner(input: delete!): Owner!
+}
